@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IDM PSI — Seja um Parceiro Franqueado | Instituto DespertaMente</title>
+  <meta name="description" content="Construa um negócio sólido no setor que mais cresce no Brasil. Conheça a franquia IDM PSI do Instituto DespertaMente e agende sua reunião de apresentação." />
+  <link rel="icon" type="image/png" href="assets/idm-logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── BRAND TOKENS (extraídos do design oficial IDM) ───────── */
+    :root {
+      --navy:      #00091C;   /* idm-dark  220 100% 6% */
+      --navy-2:    #04122C;   /* painel    */
+      --navy-3:    #08193A;   /* card hover */
+      --blue:      #13316C;   /* idm-blue  220 70% 25% */
+      --blue-lt:   #24478F;   /* idm-blue-light */
+      --orange:    #FAB338;   /* idm-orange 38 95% 60% — cor de ação */
+      --orange-lt: #F6BB55;   /* idm-orange-light */
+      --white:     #FAFAFA;   /* idm-white */
+      --gray:      #AFB6C2;   /* idm-gray  */
+      --muted:     rgba(250,250,250,.52);
+      --faint:     rgba(250,250,250,.32);
+      --line:      rgba(255,255,255,.10);
+      --line-2:    rgba(255,255,255,.06);
+      --grad-hero: linear-gradient(160deg, #00091C 0%, #0A1F45 100%);
+      --grad-cta:  linear-gradient(135deg, #FAB338 0%, #F6BB55 100%);
+      --grad-card: linear-gradient(150deg, #13316C 0%, #0C2150 100%);
+      --r:   6px;
+      --r-lg: 14px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Inter', sans-serif; background: var(--navy); color: var(--white); line-height: 1.6; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; line-height: 1.12; font-weight: 500; letter-spacing: -.01em; }
+
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 40px; }
+    .section { padding: 104px 0; }
+
+    .eyebrow {
+      font-size: .72rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--orange); display: flex; align-items: center; gap: 12px; margin-bottom: 22px;
+    }
+    .eyebrow::before { content: ''; width: 26px; height: 1px; background: var(--orange); }
+
+    /* ─── BUTTONS ──────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 15px 30px; font-family: 'Inter', sans-serif;
+      font-size: .875rem; font-weight: 600; letter-spacing: .01em;
+      border-radius: var(--r); cursor: pointer; border: none;
+      transition: all .2s ease; white-space: nowrap;
+    }
+    .btn-primary { background: var(--grad-cta); color: var(--navy); }
+    .btn-primary:hover { filter: brightness(1.06); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(250,179,56,.25); }
+    .btn-outline { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,.22); }
+    .btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+    .btn-ghost { background: rgba(255,255,255,.06); color: var(--white); }
+    .btn-ghost:hover { background: rgba(255,255,255,.12); }
+    .btn-lg { padding: 18px 38px; font-size: .95rem; }
+    .arr { transition: transform .2s; }
+    .btn:hover .arr { transform: translateX(3px); }
+
+    /* ─── NAV ──────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(0,9,28,.82); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line-2);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; max-width: 1140px; margin: 0 auto; padding: 0 40px; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand img { width: 34px; height: 34px; }
+    .brand-txt { display: flex; align-items: baseline; gap: 7px; font-family: 'Fraunces', serif; }
+    .brand-idm { font-size: 1.3rem; font-weight: 600; color: var(--white); letter-spacing: .02em; }
+    .brand-psi { font-size: 1.3rem; font-weight: 400; color: var(--orange); font-style: italic; }
+    .brand-rule { width: 1px; height: 20px; background: var(--line); }
+    .nav-links { display: flex; align-items: center; gap: 34px; }
+    .nav-links a { font-size: .83rem; color: var(--gray); transition: color .2s; }
+    .nav-links a:hover { color: var(--white); }
+
+    /* ─── HERO ─────────────────────────────────────────────────── */
+    #hero { background: var(--grad-hero); position: relative; overflow: hidden; }
+    #hero::before {
+      content: ''; position: absolute; top: -20%; right: -10%;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(250,179,56,.10) 0%, transparent 62%);
+      pointer-events: none;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1fr 440px; min-height: 100vh; padding-top: 72px; gap: 0; }
+    .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 90px 70px 90px 0; max-width: 600px; }
+    .hero-left h1 { font-size: clamp(2.5rem, 4.2vw, 3.7rem); margin-bottom: 26px; }
+    .hero-left h1 em { font-style: italic; color: var(--orange); }
+    .hero-left .lead { font-size: 1.08rem; color: var(--gray); line-height: 1.75; margin-bottom: 38px; max-width: 480px; }
+    .hero-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .hero-meta { margin-top: 26px; display: flex; align-items: center; gap: 10px; font-size: .8rem; color: var(--faint); }
+    .hero-meta::before { content: ''; width: 18px; height: 1px; background: var(--faint); }
+
+    .hero-right { display: flex; align-items: center; justify-content: center; padding: 90px 0 90px 70px; border-left: 1px solid var(--line-2); }
+
+    /* ─── FORM ─────────────────────────────────────────────────── */
+    .form-card { width: 100%; max-width: 400px; background: var(--navy-2); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 38px 34px; }
+    .form-card h3 { font-size: 1.45rem; margin-bottom: 6px; }
+    .form-card .fc-sub { font-size: .85rem; color: var(--muted); line-height: 1.6; margin-bottom: 30px; }
+    .field { margin-bottom: 16px; }
+    .field label { display: block; font-size: .7rem; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; color: var(--faint); margin-bottom: 7px; }
+    .field input, .field select {
+      width: 100%; padding: 13px 15px; border: 1px solid var(--line); border-radius: var(--r);
+      background: rgba(255,255,255,.03); color: var(--white);
+      font-family: 'Inter', sans-serif; font-size: .92rem; transition: border-color .2s, background .2s; outline: none;
+    }
+    .field input::placeholder { color: rgba(255,255,255,.25); }
+    .field input:focus, .field select:focus { border-color: var(--orange); background: rgba(255,255,255,.05); }
+    .field select { cursor: pointer; appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23FAB338' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 15px center; }
+    .field select option { background: var(--navy-2); color: var(--white); }
+    .form-btn { width: 100%; justify-content: center; margin-top: 6px; padding: 16px; }
+    .form-legal { margin-top: 13px; font-size: .72rem; color: var(--faint); text-align: center; line-height: 1.5; }
+
+    /* ─── STATS ────────────────────────────────────────────────── */
+    #stats { background: var(--navy); border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2); }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .stat { padding: 54px 38px; border-right: 1px solid var(--line-2); }
+    .stat:last-child { border-right: none; }
+    .stat-num { font-family: 'Fraunces', serif; font-size: 2.7rem; font-weight: 500; line-height: 1; margin-bottom: 10px; }
+    .stat-num span { color: var(--orange); }
+    .stat-label { font-size: .8rem; color: var(--muted); line-height: 1.5; }
+
+    /* ─── MARKET ───────────────────────────────────────────────── */
+    #market { background: var(--navy-2); }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .lead-h2 { font-size: clamp(2rem, 3.4vw, 2.9rem); margin-bottom: 24px; }
+    .market-intro p { font-size: 1rem; color: var(--gray); line-height: 1.8; margin-bottom: 16px; }
+    .facts { border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; }
+    .fact { display: grid; grid-template-columns: 110px 1fr; border-bottom: 1px solid var(--line); }
+    .fact:last-child { border-bottom: none; }
+    .fact-n { padding: 26px 18px; background: rgba(250,179,56,.06); font-family: 'Fraunces', serif; font-size: 1.55rem; font-weight: 500; color: var(--orange); display: flex; align-items: center; justify-content: center; text-align: center; line-height: 1.1; border-right: 1px solid var(--line); }
+    .fact-t { padding: 22px 24px; font-size: .875rem; color: var(--gray); line-height: 1.6; display: flex; align-items: center; }
+
+    /* ─── ABOUT ────────────────────────────────────────────────── */
+    #about { background: var(--navy); }
+    .about-grid { display: grid; grid-template-columns: 400px 1fr; gap: 76px; align-items: start; }
+    .about-visual { position: sticky; top: 110px; }
+    .about-photo { aspect-ratio: 4/5; background: var(--grad-card); border: 1px solid var(--line); border-radius: var(--r-lg); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .about-photo img.mark { width: 58%; opacity: .14; }
+    .about-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,9,28,.7) 0%, transparent 55%); }
+    .photo-cap { position: absolute; bottom: 26px; left: 28px; right: 28px; z-index: 1; }
+    .photo-cap strong { display: block; font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 500; }
+    .photo-cap span { font-size: .78rem; color: var(--gray); }
+    .about-content p { font-size: .96rem; color: var(--gray); line-height: 1.8; margin-bottom: 20px; }
+    .about-content strong { color: var(--white); font-weight: 600; }
+    .pillars { border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; margin-top: 38px; }
+    .pillar { display: flex; gap: 22px; align-items: flex-start; padding: 24px 28px; border-bottom: 1px solid var(--line); }
+    .pillar:last-child { border-bottom: none; }
+    .pillar-n { font-family: 'Fraunces', serif; font-size: 1.2rem; color: var(--orange); flex-shrink: 0; width: 26px; padding-top: 2px; }
+    .pillar h4 { font-family: 'Inter', sans-serif; font-size: .9rem; font-weight: 600; margin-bottom: 5px; }
+    .pillar p { font-size: .83rem; color: var(--muted); line-height: 1.6; }
+
+    /* ─── PRODUCTS ─────────────────────────────────────────────── */
+    #products { background: var(--navy-2); }
+    .products-head { margin-bottom: 56px; max-width: 560px; }
+    .products-head h2 { font-size: clamp(2rem, 3.4vw, 2.9rem); }
+    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+    .product { padding: 40px 32px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background .2s; }
+    .product:nth-child(3n) { border-right: none; }
+    .product:hover { background: var(--navy-3); }
+    .product-tag { font-size: .68rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
+    .product h3 { font-size: 1.18rem; margin-bottom: 12px; line-height: 1.3; }
+    .product p { font-size: .84rem; color: var(--muted); line-height: 1.65; }
+
+    /* ─── MEETING ──────────────────────────────────────────────── */
+    #meeting { background: var(--grad-hero); }
+    .meeting-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .meeting-left h2 { font-size: clamp(2rem, 3.4vw, 2.9rem); margin-bottom: 20px; }
+    .meeting-left > p { font-size: 1rem; color: var(--gray); line-height: 1.8; margin-bottom: 36px; }
+    .mpoints { display: grid; }
+    .mpoint { display: flex; gap: 22px; align-items: flex-start; padding: 22px 0; border-bottom: 1px solid var(--line-2); }
+    .mpoint:last-child { border-bottom: none; }
+    .mpoint-n { font-family: 'Fraunces', serif; font-size: 1.15rem; color: var(--orange); flex-shrink: 0; width: 24px; }
+    .mpoint h4 { font-family: 'Inter', sans-serif; font-size: .88rem; font-weight: 600; margin-bottom: 4px; }
+    .mpoint p { font-size: .8rem; color: var(--muted); line-height: 1.6; }
+    .meeting-box { background: var(--navy-2); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 46px 42px; }
+    .meeting-box h3 { font-size: 1.45rem; margin-bottom: 8px; }
+    .meeting-box p { font-size: .87rem; color: var(--muted); margin-bottom: 26px; line-height: 1.6; }
+    .meeting-box .btn { width: 100%; justify-content: center; }
+    .or-wa { text-align: center; margin-top: 16px; font-size: .8rem; color: var(--muted); }
+    .or-wa a { color: var(--orange); font-weight: 600; }
+    .mbox-note { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--line-2); font-size: .8rem; color: var(--muted); line-height: 1.6; }
+
+    /* ─── PROCESS ──────────────────────────────────────────────── */
+    #process { background: var(--navy); }
+    .process-head { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 60px; }
+    .process-head h2 { font-size: clamp(2rem, 3.4vw, 2.9rem); }
+    .process-head p { font-size: .95rem; color: var(--gray); line-height: 1.8; }
+    .steps { display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; }
+    .step { padding: 34px 26px; border-right: 1px solid var(--line); }
+    .step:last-child { border-right: none; }
+    .step-n { font-family: 'Fraunces', serif; font-size: 2.3rem; color: rgba(255,255,255,.14); line-height: 1; margin-bottom: 22px; }
+    .step h4 { font-family: 'Inter', sans-serif; font-size: .875rem; font-weight: 600; margin-bottom: 8px; line-height: 1.4; }
+    .step p { font-size: .78rem; color: var(--muted); line-height: 1.65; }
+
+    /* ─── DIFF ─────────────────────────────────────────────────── */
+    #diff { background: var(--navy-2); }
+    .diff-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 28px; margin-bottom: 52px; flex-wrap: wrap; }
+    .diff-head h2 { font-size: clamp(2rem, 3.4vw, 2.9rem); max-width: 420px; }
+    .diff-head p { font-size: .9rem; color: var(--muted); max-width: 300px; line-height: 1.7; }
+    .diff-grid { display: grid; grid-template-columns: repeat(2, 1fr); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; }
+    .diff-item { display: grid; grid-template-columns: 62px 1fr; border-bottom: 1px solid var(--line); }
+    .diff-item:nth-last-child(-n+2) { border-bottom: none; }
+    .diff-item:nth-child(odd) { border-right: 1px solid var(--line); }
+    .diff-num { padding: 30px 0; font-family: 'Fraunces', serif; font-size: 1.1rem; color: var(--orange); text-align: center; }
+    .diff-body { padding: 28px 28px 28px 8px; }
+    .diff-body h4 { font-family: 'Inter', sans-serif; font-size: .88rem; font-weight: 600; margin-bottom: 6px; }
+    .diff-body p { font-size: .8rem; color: var(--muted); line-height: 1.65; }
+
+    /* ─── TESTIMONIALS ─────────────────────────────────────────── */
+    #testimonials { background: var(--navy); }
+    .test-head { margin-bottom: 52px; }
+    .test-head h2 { font-size: clamp(2rem, 3.4vw, 2.9rem); }
+    .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .test-card { background: var(--navy-2); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 36px 32px; }
+    .test-q { font-family: 'Fraunces', serif; font-size: 3rem; line-height: .7; color: var(--orange); margin-bottom: 18px; }
+    .test-text { font-size: .9rem; color: var(--gray); line-height: 1.75; margin-bottom: 28px; font-style: italic; }
+    .test-author { display: flex; align-items: center; gap: 14px; }
+    .test-avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--grad-card); border: 1px solid var(--line); color: var(--orange); font-family: 'Fraunces', serif; font-size: 1rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .test-name { font-size: .875rem; font-weight: 600; }
+    .test-role { font-size: .75rem; color: var(--muted); }
+
+    /* ─── FAQ ──────────────────────────────────────────────────── */
+    #faq { background: var(--navy-2); }
+    .faq-grid { display: grid; grid-template-columns: 360px 1fr; gap: 80px; }
+    .faq-intro h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 16px; }
+    .faq-intro p { font-size: .9rem; color: var(--muted); line-height: 1.7; }
+    .faq-list { border-top: 1px solid var(--line); }
+    .faq-item { border-bottom: 1px solid var(--line); }
+    .faq-q { width: 100%; background: none; border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 22px 0; font-family: 'Inter', sans-serif; font-size: .925rem; font-weight: 500; color: var(--white); text-align: left; }
+    .faq-icon { color: var(--orange); font-size: 1.3rem; flex-shrink: 0; transition: transform .25s; line-height: 1; }
+    .faq-a { font-size: .875rem; color: var(--gray); line-height: 1.75; max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .25s; }
+    .faq-item.open .faq-a { max-height: 320px; padding-bottom: 22px; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    /* ─── FINAL CTA ────────────────────────────────────────────── */
+    #final { background: var(--grad-cta); color: var(--navy); }
+    .final-grid { display: grid; grid-template-columns: 1fr auto; gap: 56px; align-items: center; }
+    .final-left h2 { font-size: clamp(1.9rem, 3.2vw, 2.7rem); margin-bottom: 12px; color: var(--navy); }
+    .final-left p { font-size: .98rem; color: rgba(0,9,28,.7); line-height: 1.7; }
+    .final-eyebrow { color: rgba(0,9,28,.6); }
+    .final-eyebrow::before { background: rgba(0,9,28,.6); }
+    .final-right { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
+    .btn-navy { background: var(--navy); color: var(--white); }
+    .btn-navy:hover { background: var(--navy-3); transform: translateY(-1px); }
+    .final-or { font-size: .75rem; color: rgba(0,9,28,.5); text-align: center; }
+
+    /* ─── FOOTER ───────────────────────────────────────────────── */
+    footer { background: var(--navy); padding: 52px 0; border-top: 1px solid var(--line-2); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 26px; }
+    .footer-brand { display: flex; align-items: center; gap: 12px; }
+    .footer-brand img { width: 30px; height: 30px; }
+    .footer-brand span { font-family: 'Fraunces', serif; font-size: 1.05rem; }
+    .footer-brand span em { color: var(--orange); font-style: italic; }
+    .footer-social { display: flex; gap: 12px; }
+    .fsoc { width: 38px; height: 38px; border: 1px solid var(--line); border-radius: var(--r); display: flex; align-items: center; justify-content: center; color: var(--gray); transition: all .2s; }
+    .fsoc:hover { border-color: var(--orange); color: var(--orange); }
+    .fsoc svg { width: 17px; height: 17px; fill: currentColor; }
+    .footer-links { display: flex; gap: 26px; }
+    .footer-links a { font-size: .78rem; color: var(--faint); transition: color .2s; }
+    .footer-links a:hover { color: var(--gray); }
+    .footer-copy { width: 100%; font-size: .74rem; color: var(--faint); padding-top: 24px; margin-top: 8px; border-top: 1px solid var(--line-2); }
+
+    /* ─── WHATSAPP FLOAT ───────────────────────────────────────── */
+    .wa { position: fixed; bottom: 28px; right: 28px; z-index: 200; }
+    .wa a { display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; background: #25D366; border-radius: 50%; box-shadow: 0 6px 20px rgba(37,211,102,.4); transition: transform .2s; }
+    .wa a:hover { transform: scale(1.08); }
+    .wa svg { fill: #fff; width: 24px; height: 24px; }
+
+    /* ─── RESPONSIVE ───────────────────────────────────────────── */
+    @media (max-width: 980px) {
+      .hero-grid { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 60px 0 40px; max-width: none; }
+      .hero-right { border-left: none; border-top: 1px solid var(--line-2); padding: 48px 0; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stat:nth-child(2) { border-right: none; }
+      .stat { border-bottom: 1px solid var(--line-2); }
+      .two-col, .about-grid, .meeting-grid, .faq-grid, .process-head, .diff-head { grid-template-columns: 1fr; gap: 44px; }
+      .about-visual { position: static; }
+      .about-photo { aspect-ratio: 16/9; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .step { border-bottom: 1px solid var(--line); }
+      .step:nth-child(2n) { border-right: none; }
+      .products-grid { grid-template-columns: 1fr 1fr; }
+      .product:nth-child(2n) { border-right: none; }
+      .diff-grid { grid-template-columns: 1fr; }
+      .diff-item:nth-child(odd) { border-right: none; }
+      .diff-item:nth-last-child(-n+2):not(:last-child) { border-bottom: 1px solid var(--line); }
+      .test-grid { grid-template-columns: 1fr; }
+      .final-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .container { padding: 0 24px; }
+      .nav-inner { padding: 0 24px; }
+      .section { padding: 76px 0; }
+    }
+    @media (max-width: 560px) {
+      .steps, .products-grid { grid-template-columns: 1fr; }
+      .step:nth-child(n) { border-right: none; }
+      .product:nth-child(n) { border-right: none; }
+      .stat-num { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="brand">
+      <img src="assets/idm-logo.png" alt="IDM" />
+      <div class="brand-rule"></div>
+      <div class="brand-txt"><span class="brand-idm">IDM</span><span class="brand-psi">PSI</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="#about">Sobre</a>
+      <a href="#products">Portfólio</a>
+      <a href="#process">Como funciona</a>
+      <a href="#faq">Dúvidas</a>
+    </div>
+    <a href="#form" class="btn btn-primary">Agendar reunião</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="eyebrow">Franquia IDM PSI &middot; 2025</div>
+        <h1>Um negócio <em>construído</em> sobre o que mais cresce no Brasil</h1>
+        <p class="lead">O Instituto DespertaMente abre sua rede de franquias para empreendedores que querem atuar no mercado de saúde mental, psicanálise e autoconhecimento — com marca consolidada, suporte completo e operação 100% digital.</p>
+        <div class="hero-actions">
+          <a href="#form" class="btn btn-primary btn-lg">Agendar reunião de apresentação <span class="arr">&rarr;</span></a>
+          <a href="#about" class="btn btn-outline btn-lg">Conhecer o modelo</a>
+        </div>
+        <div class="hero-meta">Reunião gratuita, sem compromisso, por vídeo ou WhatsApp</div>
+      </div>
+
+      <div class="hero-right" id="form">
+        <div class="form-card">
+          <h3>Solicite sua reunião</h3>
+          <p class="fc-sub">Preencha os dados abaixo. Um especialista IDM PSI entrará em contato para agendar a apresentação completa da franquia.</p>
+          <form onsubmit="handleSubmit(event)">
+            <div class="field">
+              <label>Nome completo</label>
+              <input type="text" placeholder="Seu nome" required />
+            </div>
+            <div class="field">
+              <label>WhatsApp</label>
+              <input type="tel" placeholder="(11) 9 9999-0000" required />
+            </div>
+            <div class="field">
+              <label>E-mail</label>
+              <input type="email" placeholder="seu@email.com" required />
+            </div>
+            <div class="field">
+              <label>Cidade e Estado</label>
+              <input type="text" placeholder="São Paulo — SP" required />
+            </div>
+            <div class="field">
+              <label>O que motivou seu interesse?</label>
+              <select required>
+                <option value="" disabled selected>Selecione</option>
+                <option>Quero empreender em saúde mental</option>
+                <option>Busco uma renda extra com educação</option>
+                <option>Quero expandir meu negócio atual</option>
+                <option>Tenho formação na área e quero escalar</option>
+                <option>Outro motivo</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary form-btn">Solicitar reunião gratuita <span class="arr">&rarr;</span></button>
+          </form>
+          <p class="form-legal">Seus dados são sigilosos e usados apenas para contato da equipe IDM PSI.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div id="stats">
+  <div class="container" style="padding:0;">
+    <div class="stats-grid">
+      <div class="stat" style="padding-left:40px;">
+        <div class="stat-num">+5<span>mil</span></div>
+        <div class="stat-label">profissionais formados<br/>pelo IDM no Brasil e exterior</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3</div>
+        <div class="stat-label">países de atuação —<br/>Brasil, Portugal e Angola</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">47<span>%</span></div>
+        <div class="stat-label">crescimento anual do<br/>mercado de saúde mental BR</div>
+      </div>
+      <div class="stat" style="padding-right:40px;">
+        <div class="stat-num"><span>R$</span>8bi</div>
+        <div class="stat-label">movimentados por ano em<br/>cursos de psicanálise no Brasil</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MARKET -->
+<section id="market" class="section">
+  <div class="container">
+    <div class="two-col">
+      <div class="market-intro">
+        <div class="eyebrow">Oportunidade de mercado</div>
+        <h2 class="lead-h2">O Brasil nunca demandou tanto saúde mental</h2>
+        <p>A busca por psicanálise, terapia e autoconhecimento saiu da margem e se tornou prioridade cultural — impulsionada por mudanças pós-pandemia, maior acesso à informação e a crescente valorização da saúde emocional.</p>
+        <p>Esse movimento criou um mercado expressivo, ainda subatendido, com alta demanda e baixa saturação — terreno ideal para quem quer construir um negócio de impacto real.</p>
+        <a href="#form" class="btn btn-outline" style="margin-top:18px;">Quero fazer parte desse mercado</a>
+      </div>
+      <div class="facts">
+        <div class="fact"><div class="fact-n">1&nbsp;em&nbsp;4</div><div class="fact-t">brasileiros declara buscar algum tipo de suporte psicológico ou terapêutico atualmente</div></div>
+        <div class="fact"><div class="fact-n">+47%</div><div class="fact-t">de crescimento anual na procura por serviços de saúde mental entre 2022 e 2025</div></div>
+        <div class="fact"><div class="fact-n">94%</div><div class="fact-t">dos cursos IDM são entregues 100% online — sem necessidade de espaço físico ou estoque</div></div>
+        <div class="fact"><div class="fact-n">R$16bi</div><div class="fact-t">movimentados pelo setor de franquias educacionais no Brasil em 2025, com alta de 11%</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="about-photo">
+          <img class="mark" src="assets/idm-logo.png" alt="" />
+          <div class="photo-cap">
+            <strong>Rodrygo Murari</strong>
+            <span>Fundador &amp; Diretor do Instituto DespertaMente</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-content">
+        <div class="eyebrow">Sobre a IDM PSI</div>
+        <h2 class="lead-h2">A franquia do Instituto DespertaMente</h2>
+        <p>O Instituto DespertaMente é referência em formação de especialistas da mente inconsciente. Fundado por <strong>Rodrygo Murari</strong> — Psicanalista Clínico Integrativo com mais de 5.000 horas de atendimento, cursos e mentorias — o IDM tem o propósito de entregar uma psicanálise descomplicada, que honra os princípios da ciência e gera mudanças reais.</p>
+        <p>A <strong>IDM PSI</strong> é o modelo de franquia que permite ao empreendedor levar esse posicionamento consolidado para a sua região — com marca estabelecida, metodologia própria, plataforma digital e suporte estruturado desde o primeiro dia.</p>
+        <div class="pillars">
+          <div class="pillar"><div class="pillar-n">I</div><div><h4>Marca com histórico e autoridade</h4><p>Mais de 5.000 alunos formados, atuação em 3 países e uma base sólida de credibilidade construída ao longo de anos.</p></div></div>
+          <div class="pillar"><div class="pillar-n">II</div><div><h4>Modelo 100% digital e escalável</h4><p>Plataforma EAD própria, sem necessidade de ponto físico. Opere de onde quiser com overhead mínimo.</p></div></div>
+          <div class="pillar"><div class="pillar-n">III</div><div><h4>Suporte estruturado do início ao fim</h4><p>Captação de alunos, marketing, treinamento comercial e suporte contínuo. Você não começa sozinho.</p></div></div>
+          <div class="pillar"><div class="pillar-n">IV</div><div><h4>Exclusividade territorial garantida</h4><p>Sua praça, seu mercado. Nenhum outro franqueado IDM PSI atuará no mesmo território.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" class="section">
+  <div class="container">
+    <div class="products-head">
+      <div class="eyebrow">Portfólio de produtos</div>
+      <h2>O que você vai comercializar como franqueado IDM PSI</h2>
+    </div>
+    <div class="products-grid">
+      <div class="product"><div class="product-tag">Carro-chefe</div><h3>Formação em Psicanálise Integrativa</h3><p>Formação completa com módulos de PNL e Constelação Familiar. Produto mais vendido e de maior ticket do portfólio IDM.</p></div>
+      <div class="product"><div class="product-tag">Alta demanda</div><h3>Programação Neurolinguística — PNL</h3><p>Técnicas de comunicação, comportamento e mudança. Muito procurado por profissionais e pelo público de desenvolvimento pessoal.</p></div>
+      <div class="product"><div class="product-tag">Profissionais</div><h3>Terapia Breve</h3><p>Metodologia prática de resolução emocional em poucas sessões. Forte apelo entre terapeutas que buscam ampliar suas ferramentas.</p></div>
+      <div class="product"><div class="product-tag">Recorrente</div><h3>Mentoria &amp; Supervisão Clínica</h3><p>Acompanhamento continuado de alunos em formação clínica. Gera receita recorrente com relacionamento de longo prazo.</p></div>
+      <div class="product"><div class="product-tag">Funil de entrada</div><h3>Curso Gratuito IDM</h3><p>Isca digital que aquece o público e converte em alunos pagantes. Incluso no modelo de franquia como ativo de captação.</p></div>
+      <div class="product"><div class="product-tag">High-ticket</div><h3>Eventos &amp; Imersões ao Vivo</h3><p>Eventos online e presenciais para engajar a comunidade e gerar vendas de maior valor agregado na sua região.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MEETING -->
+<section id="meeting" class="section">
+  <div class="container">
+    <div class="meeting-grid">
+      <div class="meeting-left">
+        <div class="eyebrow">Próximo passo</div>
+        <h2>Agende sua reunião de apresentação</h2>
+        <p>Na reunião você entende em profundidade o modelo IDM PSI, tira todas as suas dúvidas e avalia se a oportunidade faz sentido para o seu momento — sem pressão e sem compromisso.</p>
+        <div class="mpoints">
+          <div class="mpoint"><div class="mpoint-n">I</div><div><h4>Apresentação completa do modelo</h4><p>Como funciona a operação IDM PSI do início ao fim, com clareza e objetividade.</p></div></div>
+          <div class="mpoint"><div class="mpoint-n">II</div><div><h4>Suas dúvidas respondidas</h4><p>Conversa direta com um especialista IDM. Sem roteiro de vendas, sem pressão.</p></div></div>
+          <div class="mpoint"><div class="mpoint-n">III</div><div><h4>Avaliação do seu perfil e região</h4><p>Entendemos juntos se a sua cidade e contexto são os ideais para iniciar.</p></div></div>
+        </div>
+      </div>
+      <div class="meeting-box">
+        <h3>Solicite a reunião</h3>
+        <p>Preencha o formulário no topo da página ou fale direto com nossa equipe pelo WhatsApp.</p>
+        <a href="#form" class="btn btn-primary btn-lg">Ir para o formulário &uarr;</a>
+        <p class="or-wa">ou fale agora via <a href="https://wa.me/5511930439385?text=Olá!%20Quero%20agendar%20uma%20reunião%20para%20conhecer%20a%20franquia%20IDM%20PSI" target="_blank">WhatsApp</a></p>
+        <p class="mbox-note">Após o preenchimento, nossa equipe entra em contato em até 1 dia útil para confirmar data e horário da reunião.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="section">
+  <div class="container">
+    <div class="process-head">
+      <div>
+        <div class="eyebrow">Como funciona</div>
+        <h2>Da conversa ao primeiro aluno</h2>
+      </div>
+      <p>Nosso onboarding foi desenhado para que você comece a operar com segurança e velocidade, sem precisar descobrir nada sozinho.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step-n">01</div><h4>Reunião de apresentação</h4><p>Você conhece o modelo, tira dúvidas e avalia a oportunidade com um especialista IDM.</p></div>
+      <div class="step"><div class="step-n">02</div><h4>Contrato &amp; onboarding</h4><p>Documentação simples. Em até 48h você acessa a plataforma e os materiais iniciais.</p></div>
+      <div class="step"><div class="step-n">03</div><h4>Treinamento completo</h4><p>Formação em vendas, marketing digital e operação do modelo IDM PSI.</p></div>
+      <div class="step"><div class="step-n">04</div><h4>Setup digital</h4><p>Configuramos juntos sua presença online, funil de captação e integração com a plataforma.</p></div>
+      <div class="step"><div class="step-n">05</div><h4>Lançamento e vendas</h4><p>Com apoio do time IDM, você lança sua operação e inicia a geração de alunos.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFF -->
+<section id="diff" class="section">
+  <div class="container">
+    <div class="diff-head">
+      <div>
+        <div class="eyebrow">Por que IDM PSI</div>
+        <h2>O que diferencia este modelo</h2>
+      </div>
+      <p>Seis razões práticas pelas quais empreendedores escolhem a IDM PSI.</p>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-item"><div class="diff-num">01</div><div class="diff-body"><h4>100% digital — sem ponto físico</h4><p>Sem aluguel, sem reforma, sem estoque. Modelo enxuto, operável de qualquer lugar com internet.</p></div></div>
+      <div class="diff-item"><div class="diff-num">02</div><div class="diff-body"><h4>Plataforma EAD exclusiva IDM</h4><p>Sistema completo de entrega de conteúdo, certificados e suporte ao aluno em um só ambiente.</p></div></div>
+      <div class="diff-item"><div class="diff-num">03</div><div class="diff-body"><h4>Marketing e campanhas prontos</h4><p>Artes, vídeos, copys e estratégias de tráfego pago já testadas. Você não parte do zero.</p></div></div>
+      <div class="diff-item"><div class="diff-num">04</div><div class="diff-body"><h4>Não exige formação prévia na área</h4><p>A IDM PSI treina você para operar, vender e escalar. A expertise de conteúdo é do Instituto.</p></div></div>
+      <div class="diff-item"><div class="diff-num">05</div><div class="diff-body"><h4>Múltiplas fontes de receita</h4><p>Psicanálise, PNL, mentorias, supervisões e eventos. Diversificação desde o primeiro dia.</p></div></div>
+      <div class="diff-item"><div class="diff-num">06</div><div class="diff-body"><h4>Exclusividade territorial</h4><p>Sua cidade, sua praça. Nenhum outro franqueado IDM PSI concorrerá com você na mesma região.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="section">
+  <div class="container">
+    <div class="test-head">
+      <div class="eyebrow">Depoimentos</div>
+      <h2>Quem já faz parte do IDM</h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card">
+        <div class="test-q">&ldquo;</div>
+        <p class="test-text">O IDM mudou minha forma de ver o mundo. Nunca imaginei que estudar psicanálise me abriria tantas portas — profissional e pessoalmente.</p>
+        <div class="test-author"><div class="test-avatar">A</div><div><div class="test-name">Ana M.</div><div class="test-role">Formação em Psicanálise Integrativa</div></div></div>
+      </div>
+      <div class="test-card">
+        <div class="test-q">&ldquo;</div>
+        <p class="test-text">O Rodrygo tem o dom de tornar a psicanálise acessível e prática. O material é rico, o suporte é presente e o resultado no meu consultório foi imediato.</p>
+        <div class="test-author"><div class="test-avatar">C</div><div><div class="test-name">Carlos R.</div><div class="test-role">PNL Avançado + Terapia Breve</div></div></div>
+      </div>
+      <div class="test-card">
+        <div class="test-q">&ldquo;</div>
+        <p class="test-text">Investi no IDM sem experiência nenhuma na área e hoje atendo clientes e formo outros profissionais. A metodologia transforma de verdade.</p>
+        <div class="test-author"><div class="test-avatar">P</div><div><div class="test-name">Paula L.</div><div class="test-role">Formação Completa IDM</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section">
+  <div class="container">
+    <div class="faq-grid">
+      <div class="faq-intro">
+        <div class="eyebrow">Dúvidas</div>
+        <h2>Perguntas frequentes</h2>
+        <p>Não encontrou o que procura? Fale com nossa equipe pelo WhatsApp.</p>
+        <a href="https://wa.me/5511930439385" target="_blank" class="btn btn-outline" style="margin-top:24px;">Falar no WhatsApp</a>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Preciso ter formação em psicologia ou psicanálise?<span class="faq-icon">+</span></button><div class="faq-a">Não. A IDM PSI é um modelo de negócio para empreendedores. Você não precisa ser terapeuta — vai operar, vender e gerenciar o negócio, enquanto o conteúdo e a expertise são do Instituto DespertaMente.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Preciso de espaço físico ou ponto comercial?<span class="faq-icon">+</span></button><div class="faq-a">Não. A IDM PSI opera 100% no ambiente digital. Toda formação é entregue via plataforma EAD, atendimento via WhatsApp e vendas online. Você pode operar do home office.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Como funcionam os investimentos e o retorno?<span class="faq-icon">+</span></button><div class="faq-a">Os valores de investimento, modelos disponíveis e projeções financeiras são apresentados em detalhe na reunião de apresentação — gratuita e sem compromisso. Cada modelo é adequado ao perfil e capital do franqueado.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Recebo suporte de marketing e vendas?<span class="faq-icon">+</span></button><div class="faq-a">Sim. A IDM PSI oferece kit completo de materiais de marketing — artes, copys, scripts de vendas — além de estratégias de tráfego pago testadas e suporte comercial contínuo.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Terei exclusividade na minha cidade?<span class="faq-icon">+</span></button><div class="faq-a">Sim. A exclusividade territorial faz parte do modelo. Nenhum outro franqueado IDM PSI atuará no território definido no seu contrato.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Posso começar sem experiência em negócios digitais?<span class="faq-icon">+</span></button><div class="faq-a">Sim. O treinamento IDM PSI cobre desde as ferramentas digitais até estratégias de captação, vendas e gestão de alunos. Muitos franqueados de sucesso começaram sem experiência prévia no setor.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="final" class="section">
+  <div class="container">
+    <div class="final-grid">
+      <div class="final-left">
+        <div class="eyebrow final-eyebrow">Sua oportunidade</div>
+        <h2>Pronto para conhecer o modelo IDM PSI em detalhe?</h2>
+        <p>As vagas por território são limitadas. Agende uma reunião gratuita e entenda se esta é a oportunidade certa para o seu momento.</p>
+      </div>
+      <div class="final-right">
+        <a href="#form" class="btn btn-navy btn-lg">Agendar reunião gratuita</a>
+        <span class="final-or">ou</span>
+        <a href="https://wa.me/5511930439385?text=Olá!%20Quero%20agendar%20uma%20reunião%20para%20conhecer%20a%20franquia%20IDM%20PSI" target="_blank" class="btn btn-lg" style="background:#25D366;color:#fff;justify-content:center;">WhatsApp direto</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/idm-logo.png" alt="IDM" />
+        <span>IDM <em>PSI</em> &mdash; Instituto DespertaMente</span>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/idmpsi.franquia" target="_blank" class="fsoc" title="Instagram @idmpsi.franquia">
+          <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.86s0 3.6-.07 4.86c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.86.07s-3.6 0-4.86-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.86c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.4 2.2 8.8 2.2 12 2.2zm0 1.94c-3.15 0-3.5.01-4.74.07-.9.04-1.39.2-1.71.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.13.32-.28.81-.32 1.71-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.04.9.2 1.39.32 1.71.17.43.37.74.69 1.06.32.32.63.52 1.06.69.32.13.81.28 1.71.32 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c.9-.04 1.39-.2 1.71-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.13-.32.28-.81.32-1.71.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.04-.9-.2-1.39-.32-1.71a2.85 2.85 0 0 0-.69-1.06 2.85 2.85 0 0 0-1.06-.69c-.32-.13-.81-.28-1.71-.32-1.24-.06-1.59-.07-4.74-.07zm0 3.3a4.56 4.56 0 1 1 0 9.12 4.56 4.56 0 0 1 0-9.12zm0 7.52a2.96 2.96 0 1 0 0-5.92 2.96 2.96 0 0 0 0 5.92zm5.8-7.74a1.07 1.07 0 1 1-2.14 0 1.07 1.07 0 0 1 2.14 0z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/institutodespertamente/" target="_blank" class="fsoc" title="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.45 2.89h-2.33v6.99A10 10 0 0 0 22 12z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@institutodespertamente" target="_blank" class="fsoc" title="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M23.5 6.5a3 3 0 0 0-2.1-2.1C19.5 3.9 12 3.9 12 3.9s-7.5 0-9.4.5A3 3 0 0 0 .5 6.5C0 8.4 0 12 0 12s0 3.6.5 5.5a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.5.5-5.5s0-3.6-.5-5.5zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
+        </a>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacidade</a>
+        <a href="#">Termos</a>
+        <a href="mailto:contato@institutodespertamente.com.br">Contato</a>
+      </div>
+      <div class="footer-copy">© 2026 IDM PSI &middot; Instituto DespertaMente. Todos os direitos reservados.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<div class="wa">
+  <a href="https://wa.me/5511930439385?text=Olá!%20Quero%20agendar%20uma%20reunião%20para%20conhecer%20a%20franquia%20IDM%20PSI" target="_blank" title="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.34M12.05 21.8h-.01a9.8 9.8 0 0 1-5-1.37l-.36-.21-3.72.98 1-3.64-.24-.37a9.8 9.8 0 0 1-1.5-5.22A9.86 9.86 0 0 1 18.9 5.04a9.8 9.8 0 0 1 2.9 6.99 9.86 9.86 0 0 1-9.74 9.77M20.5 3.49A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.14 1.6 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.9-11.9a11.8 11.8 0 0 0-3.46-8.41"/></svg>
+  </a>
+</div>
+
+<script>
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-btn');
+    btn.innerHTML = 'Solicitação enviada — entraremos em contato';
+    btn.style.background = '#25D366';
+    btn.style.color = '#fff';
+    btn.disabled = true;
+    setTimeout(() => {
+      window.open('https://wa.me/5511930439385?text=Olá!%20Preenchi%20o%20formulário%20e%20gostaria%20de%20agendar%20a%20reunião%20de%20apresentação%20da%20IDM%20PSI', '_blank');
+    }, 1600);
+  }
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.boxShadow = window.scrollY > 40 ? '0 1px 16px rgba(0,0,0,.4)' : 'none';
+  });
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.product, .step, .diff-item, .test-card, .fact, .pillar').forEach(el => {
+    el.style.opacity = '0'; el.style.transform = 'translateY(16px)';
+    el.style.transition = 'opacity .5s ease, transform .5s ease';
+    io.observe(el);
+  });
+</script>
+</body>
+</html>
