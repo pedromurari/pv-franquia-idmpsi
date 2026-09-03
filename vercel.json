@@ -1,7 +1,8 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "redirects": [
-    { "source": "/", "destination": "/franquia", "permanent": false }
+  "outputDirectory": "franquia",
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" }
   ]
 }

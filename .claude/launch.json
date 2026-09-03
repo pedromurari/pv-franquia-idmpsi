@@ -4,7 +4,7 @@
     {
       "name": "idm-psi",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", "-p", "3000", "."],
+      "runtimeArgs": ["serve", "-p", "3000", "franquia"],
       "port": 3000
     }
   ]
