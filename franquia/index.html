@@ -201,8 +201,8 @@
     .stat-label { font-size: .8rem; color: var(--muted); line-height: 1.5; }
 
     /* ─── VSL ─────────────────────────────────────────────────── */
-    .vsl-wrapper { position: relative; width: 100%; max-width: 860px; margin: 0 auto; padding-bottom: 56.25%; border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--line); }
-    .vsl-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+    .vsl-wrapper { position: relative; width: 100%; max-width: 860px; margin: 0 auto; border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--line); background: #000; }
+    .vsl-wrapper video { display: block; width: 100%; height: auto; }
 
     /* ─── MARKET ───────────────────────────────────────────────── */
     #market { background: var(--navy-2); }
@@ -537,7 +537,10 @@
       <h2 class="lead-h2">Conheça o modelo de franquia IDM PSI</h2>
     </div>
     <div class="vsl-wrapper">
-      <iframe src="https://www.youtube.com/embed/JUm_AYNyyhA?si=LGXcmG4q36Hy5Mhq&amp;controls=0&amp;cc_load_policy=0&amp;iv_load_policy=3&amp;rel=0" title="Apresentação Franquia IDM PSI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <video controls playsinline preload="metadata" poster="">
+        <source src="assets/vsl.mp4" type="video/mp4">
+        Seu navegador não suporta vídeo HTML5.
+      </video>
     </div>
   </div>
 </section>
