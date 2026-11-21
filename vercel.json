@@ -4,5 +4,17 @@
   "outputDirectory": "franquia",
   "rewrites": [
     { "source": "/", "destination": "/index.html" }
+  ],
+  "redirects": [
+    {
+      "source": "/yt/:episodio",
+      "destination": "/?utm_source=youtube&utm_medium=organico&utm_campaign=alemdoconsultorio&utm_content=:episodio#form",
+      "permanent": false
+    },
+    {
+      "source": "/sh/:corte",
+      "destination": "/?utm_source=youtube&utm_medium=shorts&utm_campaign=alemdoconsultorio&utm_content=:corte#form",
+      "permanent": false
+    }
   ]
 }
