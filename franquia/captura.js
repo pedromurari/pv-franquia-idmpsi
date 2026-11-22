@@ -85,13 +85,24 @@
   //
   // O `_fbc` só nasce se o pixel estava carregado no momento do clique. Quem
   // clicou no anúncio ANTES do pixel existir tem o fbclid guardado por nós mas
-  // nenhum cookie; nesse caso remontamos no formato que o Meta espera,
-  // `fb.1.<timestamp do clique>.<fbclid>`.
+  // nenhum cookie; nesse caso remontamos no formato que o Meta espera:
+  // `fb.<indice de subdominio>.<timestamp do clique>.<fbclid>`.
+  //
+  // Aquele índice NÃO é fixo -- depende de em que nível do domínio o cookie
+  // foi gravado (neste site, com `www.` e TLD composto `.com.br`, o próprio
+  // Meta usa 2, não 1). Errar o índice faz o Meta descartar o match, então
+  // copiamos o que o pixel usou no `_fbp`, que ele grava no mesmo domínio.
+  function obterIndiceSubdominio() {
+    const fbp = lerCookie('_fbp');
+    const partes = fbp.split('.');
+    return partes.length >= 2 && /^\d+$/.test(partes[1]) ? partes[1] : '2';
+  }
+
   function obterFbc(atribuicao) {
     const cookie = lerCookie('_fbc');
     if (cookie) return cookie;
     if (!atribuicao.fbclid) return '';
-    return 'fb.1.' + (atribuicao.capturadoEm || Date.now()) + '.' + atribuicao.fbclid;
+    return 'fb.' + obterIndiceSubdominio() + '.' + (atribuicao.capturadoEm || Date.now()) + '.' + atribuicao.fbclid;
   }
 
   function atualizarBotao() {
